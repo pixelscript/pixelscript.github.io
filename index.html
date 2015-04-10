@@ -28,7 +28,8 @@
     		margin:0;
     	}
     	.image{
-    		background-size:cover;
+    		background-size:contain;
+    		background-position:50% 50%;
     		background-repeat:no-repeat;
     		position:absolute;
     		top:0;
@@ -46,6 +47,10 @@
    <div class="thebutton-container locked active">
    	<button id="thebutton" title="BUTTON PRESS BUTTON PRESS IT BUTTON THE BUTTON PRESS IT PRESS THE BUTTON BUTTON BUTTON PRESS IT THE BUTTON THE BUTTON PRESS BUTTON IT PRESS IT THE BUTTON PRESS IT NOW" type="button">[you feel an overwhelming urge to press the button]</button>
    </div>
+   <br/>
+   &nbsp;
+   <br/>
+   <div id="info">It's safe to press, honest!</div>
 </form>
 	<script>
 		var subreddits = ["earthporn","CityPorn","ruralporn","botanicalporn","seaporn","skyporn","macroporn","remoteplaces","SummerPorn","earthporn"];
@@ -114,7 +119,8 @@
 			if(sections[sections.length-1].split('.').length<2){
 				url+='.jpg';
 			}
-			$('.image').css('background-image',"url('"+url+"')");
+			$('.image').css('background-image',"url('"+url+"')");	
+			
 		}
 
 		$('#thebutton').on('touchstart mousedown',function(e){
@@ -136,6 +142,6 @@
 
 	<audio id="click" src="media/click.wav"></audio>
 	<audio id="boing" src="media/boing.wav"></audio>
-	
+
 </body>
 </html>
