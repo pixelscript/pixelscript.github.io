@@ -98,7 +98,7 @@
 			}
 			for(var i=0;i<data.children.length;i++){
 				if(data.children[i].data && data.children[i].data.domain){
-					if(data.children[i].data.domain!=="imgur.com" || data.children[i].data.url.indexOf('/a/')!==-1){
+					if(data.children[i].data.domain.indexOf("imgur.com")===-1 || data.children[i].data.url.indexOf('/a/')!==-1){
 						data.children.splice(i,1);
 						i--;
 					}
