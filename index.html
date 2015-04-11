@@ -6,7 +6,7 @@
 	<title>thebutton thebutton thebutton thebutton thebutton thebutton thebutton thebutton thebutton</title>
 	<link ref="text/css" rel="stylesheet" href="http://www.redditstatic.com/thebutton.i-G5y6pAHNE.css" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
 	<style>
 	body,html{
 		width:100%;
@@ -67,10 +67,14 @@
 	</form>
 	<div class="thebutton-form footer">You have pressed the button <span class="number">0</span> times.</div>
 	<script>
+	window.addEventListener('load', function() {
+	    new FastClick(document.body);
+	}, false);
+
 	var count = 0;
 	var subreddits = ["earthporn","CityPorn","ruralporn","botanicalporn","seaporn","skyporn","macroporn","remoteplaces","SummerPorn","earthporn"];
 
-	$('.thebutton-container').on('touchstart mousedown',function(e){
+	$('.thebutton-container').on('click',function(e){
 		$(e.target).removeClass('locked');
 		$(e.target).addClass('unlocking');
 		setTimeout(function(){
@@ -125,7 +129,6 @@
 
 	function getRandomContent(){
 		var sub = subreddits[Math.floor(Math.random()*10)];
-		console.log(sub);
 		var url = "http://www.reddit.com/r/"+sub+"/top/.json?sort=top&t=month";
 		$.ajax({
 			url: url,
@@ -162,7 +165,8 @@
 
 	}
 
-	$('#thebutton').on('touchstart mousedown',function(e){
+	$('#thebutton').on('click',function(e){
+		console.log('function b');
 		count++;
 		setNumber();
 		$('#info').remove();
