@@ -26,7 +26,9 @@
 		cursor:pointer;
 	}
 	.thebutton-container{
-		margin:0;
+		margin:auto;
+		float:none!important;
+		width:160px;
 	}
 	.image{
 		background-size:contain;
@@ -47,6 +49,9 @@
 		right:0;
 		margin:10px;
 	}
+	#info{
+		margin-top:20px;
+	}
 	</style>
 </head>
 <body>
@@ -57,9 +62,6 @@
 		</div>
 
 		<div id="info">
-			<br/>
-			&nbsp;
-			<br/>
 			It's safe to press, honest!
 		</div>
 	</form>
@@ -163,7 +165,7 @@
 	$('#thebutton').on('touchstart mousedown',function(e){
 		count++;
 		setNumber();
-		$('#info').html('');
+		$('#info').remove();
 		doRandomShit();
 	});
 
