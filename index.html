@@ -21,7 +21,7 @@
 	<meta charset="UTF-8"> 
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<title>thebutton thebutton thebutton thebutton thebutton thebutton thebutton thebutton thebutton</title>
-	<link ref="text/css" rel="stylesheet" href="http://www.redditstatic.com/thebutton.i-G5y6pAHNE.css" />
+	<link ref="text/css" rel="stylesheet" href="//www.redditstatic.com/thebutton.i-G5y6pAHNE.css" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
 	<style>
@@ -134,10 +134,10 @@
 
 	function editURL(url) {
 		var newURL = '';
-		if(url.indexOf("http://imgur.com/")!==-1){
+		if(url.indexOf("https://imgur.com/")!==-1){
 			var split = url.split('/');
 			var end = split[split.length-1];
-			newURL = "http://i.imgur.com/"+end+".jpg";
+			newURL = "https://i.imgur.com/"+end+".jpg";
 		} else {
 			newURL = url;
 		}
@@ -146,7 +146,7 @@
 
 	function getRandomContent(){
 		var sub = subreddits[Math.floor(Math.random()*10)];
-		var url = "http://www.reddit.com/r/"+sub+"/top/.json?sort=top&t=month";
+		var url = "https://www.reddit.com/r/"+sub+"/top/.json?sort=top&t=month";
 		$.ajax({
 			url: url,
 			context: document.body
@@ -164,8 +164,8 @@
 			return;
 		}
 		for(var i=0;i<data.children.length;i++){
-			if(data.children[i].data && data.children[i].data.url){
-				data.children[i].data.url = editURL(data.children[i].data.url);
+			if(data.children[i].data && data.children[i].data.url_overridden_by_dest){
+				data.children[i].data.url = editURL(data.children[i].data.url_overridden_by_dest);
 				if(!testURL(data.children[i].data.url)){
 					data.children.splice(i,1);
 					i--;
